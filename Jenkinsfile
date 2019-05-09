@@ -4,7 +4,7 @@ pipeline {
 
     stages {
         stage('SCM Checkout'){
-      git 'https://github.com/prakashk0301/jenkins-example'
+          git 'https://github.com/prakashk0301/jenkins-example'
         }
   }
     {
@@ -35,19 +35,10 @@ pipeline {
             }
         }
 
-//node{
-//  stage('SCM Checkout'){
-//     git 'https://github.com/prakashk0301/jenkins-example'
-//  }
-//   stage('Compile-Package'){
-//      // Get maven home path
-//      def mvnHome =  tool name: 'localMaven', type: 'maven'   
-//      sh "${mvnHome}/bin/mvn package"
-//   }
-   stage('Deploy to Tomcat'){
+         stage('Deploy to Tomcat'){
       
-      sshagent(['deploy-dev']) {
-         sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@172.31.42.125:/var/lib/tomcat/webapps/'
+            sshagent(['deploy-dev']) {
+               sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@172.31.42.125:/var/lib/tomcat/webapps/'
       }
    }
 }
