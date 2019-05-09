@@ -5,7 +5,7 @@ pipeline {
         stage ('Compile Stage') {
 
             steps {
-                withMaven(maven : 'maven_3_5_0') {
+                withMaven(maven : 'LocalMaven') {
                     sh 'mvn clean compile'
                 }
             }
@@ -14,19 +14,22 @@ pipeline {
         stage ('Testing Stage') {
 
             steps {
-                withMaven(maven : 'maven_3_5_0') {
+                withMaven(maven : 'LocalMaven') {
                     sh 'mvn test'
                 }
             }
         }
 
 
-        stage ('Deployment Stage') {
+        stage ('install Stage') {
             steps {
-                withMaven(maven : 'maven_3_5_0') {
-                    sh 'mvn deploy'
+                withMaven(maven : 'LocalMaven') {
+                    sh 'mvn install'
                 }
             }
         }
+        stage ('Deployment Stage')
+            sh 'chmod a+x deployment/deploy_prod.sh'     
+            sh './deployment/deploy_prod.sh'
     }
 }
