@@ -28,11 +28,11 @@ pipeline {
                 }
             }
         }
-        stage 'Deployment Stage' {
-            step {
+       stage 'Deployment Stage' {
+           step {
         
-            sh 'chmod a+x deployment/deploy_prod.sh'     
-            sh './deployment/deploy_prod.sh'
+           sh 'chmod a+x deployment/deploy_prod.sh'     
+           sh './deployment/deploy_prod.sh'
             }
         }
     }
