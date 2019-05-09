@@ -1,10 +1,13 @@
 pipeline {
     agent any
 
-    stage('SCM Checkout'){
-      git 'https://github.com/prakashk0301/jenkins-example'
-  }
+
     stages {
+        stage('SCM Checkout'){
+      git 'https://github.com/prakashk0301/jenkins-example'
+        }
+  }
+    {
         stage ('Compile Stage') {
 
             steps {
