@@ -1,4 +1,4 @@
-In order to deploy on tomcat, you need Task Scanner Plugin and JUnit Attachments Plugin 
+In order to deploy on tomcat, you need Pipeline Maven Integration , Task Scanner Plugin and JUnit Attachments Plugin 
 ## Fizz Buzz Example in Java 8 using JUnit 5
 
 ### Fizz Buzz is a game where
